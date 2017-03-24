@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    tools:context="app.android.javierg.exchandroid.MainPage"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="69dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="27dp"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
+
+        <EditText
+            android:id="@+id/amount"
+            style="@android:style/Widget.AutoCompleteTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1.02"
+            android:background="@android:color/background_light"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:selectAllOnFocus="false"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="18sp"
+            android:visibility="visible"
+            tools:layout_editor_absoluteX="123dp"
+            tools:layout_editor_absoluteY="406dp" />
+
+        <Spinner
+            android:id="@+id/from"
+            android:layout_width="189dp"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="236dp"
+            tools:layout_editor_absoluteY="160dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="69dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="179dp"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
+
+        <EditText
+            android:id="@+id/amountConverted"
+            style="@android:style/Widget.AutoCompleteTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1.04"
+            android:background="@android:color/background_light"
+            android:editable="false"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:selectAllOnFocus="false"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="18sp"
+            android:visibility="visible"
+            tools:layout_editor_absoluteX="123dp"
+            tools:layout_editor_absoluteY="406dp" />
+
+        <Spinner
+            android:id="@+id/to"
+            android:layout_width="189dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.01"
+            tools:layout_editor_absoluteX="236dp"
+            tools:layout_editor_absoluteY="160dp" />
+    </LinearLayout>
+
+    <ToggleButton
+        android:id="@+id/swappingButton"
+        android:layout_width="57dp"
+        android:layout_height="57dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginRight="73dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/swap"
+        android:onClick="swapCurrencies"
+        android:text="Swap"
+        app:layout_constraintRight_toRightOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1"
+        tools:text="Swap" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/.gradle/caches/modules-2/files-2.1/org.springframework.android/spring-android-rest-template/1.0.1.RELEASE/e132d929bd181941f79b0d63edafb8a86ae6fd33/spring-android-rest-template-1.0.1.RELEASE.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e132d929bd181941f79b0d63edafb8a86ae6fd33">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/spring-android-rest-template-1.0.1.RELEASE_6cf12f138da559c1b16eb526d23cb19dfc964b5f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_97c49fcdef7fdb9d0030923756d2f414d6e04b13/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.9/386a4339ffe52d5d63e80f9bed8d2b1d1a418249/android-async-http-1.4.9.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/android-async-http-1.4.9_bd09075f9710f24441f579646d08158d9da9c5e7/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/javierg/.android/build-cache/1d33570e1f82144618e60b9c87e312f8b110c7ac/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="93c1199fcb0a34b980e6fff8350daff62e696ec2">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/pre-dexed/debug/classes_ee0a42ee49f009a6a5f478a93aff72c8332e6ce9.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Applications/Android Studio.app/Contents/gradle/m2repository/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.2.4_d0ce76b63ce905fbab3c5d385c8e1b8692010f19/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/.android/build-cache/003d7e07571d4aa584134795761910f6404de98d/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a8e05f3da79f4601e1800a00dbce8fd7f64d9702/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bea193e49044280115bd6a4eef24e414ac8df9b1">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_f6c25c4a3fd5c3df843ba7ad7fca9a4e225b8490/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/javierg/.android/build-cache/00877b2fd265fce3c16ff7616616b68cd7ce44aa/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="93c10d68ab5ea070f15782ae6d3a28d1f1d8f45e">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/pre-dexed/debug/classes_a6520feb8e2939e889234219a928659c9c992d52.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/.android/build-cache/00877b2fd265fce3c16ff7616616b68cd7ce44aa/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="93c10d68ab5ea070f15782ae6d3a28d1f1d8f45e">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a6520feb8e2939e889234219a928659c9c992d52/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.3.2/c75edc740a6d8cb1cef6fa82fa594e0bce561916/jackson-databind-2.3.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c75edc740a6d8cb1cef6fa82fa594e0bce561916">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-databind-2.3.2_3b88f47faae8d89b9d35ccef7c0938447999e55a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/.gradle/caches/modules-2/files-2.1/cz.msebera.android/httpclient/4.3.6/526a9f794eab830eae4f23a62c572878b3f491ab/httpclient-4.3.6.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="526a9f794eab830eae4f23a62c572878b3f491ab">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/httpclient-4.3.6_39c2a71ef7a67461281307e8c07fb76074941c14/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/javierg/.android/build-cache/003d7e07571d4aa584134795761910f6404de98d/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/pre-dexed/debug/classes_a8e05f3da79f4601e1800a00dbce8fd7f64d9702.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/.android/build-cache/fee666cc5fe28380fb9a5a63c75e2f010e87cf26/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4b746ef0fd46acb5aaf3d9ab9a4cec22c28d3211">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d90caa047d9d649a0b4c8944d9a16a0f41918c7a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/.android/build-cache/4fb84e348fc5ed3bb05005adf4da795717ba3cfb/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="70f23cb87278f89aa51e6f57e8f0fd5266572d95">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_645a3fd840be8b8637503058f16d9ccbd76f3f48/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/javierg/.android/build-cache/fee666cc5fe28380fb9a5a63c75e2f010e87cf26/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4b746ef0fd46acb5aaf3d9ab9a4cec22c28d3211">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/pre-dexed/debug/classes_d90caa047d9d649a0b4c8944d9a16a0f41918c7a.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/.android/build-cache/278827e325b5ede5725ae9e06c0f36e123a19af0/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5cc5ef8347a6bafa14556cbd35230aa9b3431bb0">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_6024ecd451321493da2514d5a90e0b04b3fb7e22/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/javierg/.android/build-cache/9b465f73db498306beb11cb19f2d8aceaa06219b/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="425c7b17887e5c3f8cbdf67ba171bc246f29b42c">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/pre-dexed/debug/classes_f42e2c3c254fdb1af402ffb0e85a7f615563bdc3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/javierg/.android/build-cache/4fb84e348fc5ed3bb05005adf4da795717ba3cfb/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="70f23cb87278f89aa51e6f57e8f0fd5266572d95">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/pre-dexed/debug/classes_645a3fd840be8b8637503058f16d9ccbd76f3f48.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/javierg/.android/build-cache/569748f3d2654f72b0221331605ef2593fd6b76c/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/pre-dexed/debug/classes_a936971e431ca75a1d32332840a653890550b71a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/javierg/.android/build-cache/278827e325b5ede5725ae9e06c0f36e123a19af0/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5cc5ef8347a6bafa14556cbd35230aa9b3431bb0">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/pre-dexed/debug/classes_6024ecd451321493da2514d5a90e0b04b3fb7e22.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/.android/build-cache/9b465f73db498306beb11cb19f2d8aceaa06219b/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="425c7b17887e5c3f8cbdf67ba171bc246f29b42c">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f42e2c3c254fdb1af402ffb0e85a7f615563bdc3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/.android/build-cache/569748f3d2654f72b0221331605ef2593fd6b76c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a936971e431ca75a1d32332840a653890550b71a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.3.0/f5e853a20b60758922453d56f9ae1e64af5cb3da/jackson-annotations-2.3.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f5e853a20b60758922453d56f9ae1e64af5cb3da">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-annotations-2.3.0_0f63f96487211b6dd52c4f2489c375ddfd6be0a0/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/javierg/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.2_53abfbb80358c1d2e52de1f4c109002fa46d4904.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.3.2/559b70ac8a0d5cad611da4223137a920147201ba/jackson-core-2.3.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="559b70ac8a0d5cad611da4223137a920147201ba">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-core-2.3.2_339878fb59227b9b01a2cbe477d0a6f7c7e42207/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.2_53abfbb80358c1d2e52de1f4c109002fa46d4904/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/javierg/.android/build-cache/27001e67103f1d254d769009ffd176abf6c66527/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d6a04527c17597019dad82777c5094a3d60d1c33">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/pre-dexed/debug/classes_acbcf7afc4f30d9bc4a675f3b6fcd1081a1447c2.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/.android/build-cache/27001e67103f1d254d769009ffd176abf6c66527/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d6a04527c17597019dad82777c5094a3d60d1c33">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_acbcf7afc4f30d9bc4a675f3b6fcd1081a1447c2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/.android/build-cache/3a7b26dcd844256e776ee5a42615bd705c9e71cf/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="518768f3200963fbfec652f498da2c9d39245234">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7342bb2933d320b621901082505f5cecd433df48/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.0/support-annotations-25.3.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="dd84903d2e1af25a6081ef9038ad863cb14ca3a0">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.3.0_4a7694c39b04ba9f68dcfeaa263bd94ff6729d6f/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/javierg/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.0/support-annotations-25.3.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="dd84903d2e1af25a6081ef9038ad863cb14ca3a0">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/pre-dexed/debug/support-annotations-25.3.0_4a7694c39b04ba9f68dcfeaa263bd94ff6729d6f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/javierg/.android/build-cache/3a7b26dcd844256e776ee5a42615bd705c9e71cf/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="518768f3200963fbfec652f498da2c9d39245234">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/pre-dexed/debug/classes_7342bb2933d320b621901082505f5cecd433df48.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/.android/build-cache/1d33570e1f82144618e60b9c87e312f8b110c7ac/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="93c1199fcb0a34b980e6fff8350daff62e696ec2">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ee0a42ee49f009a6a5f478a93aff72c8332e6ce9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/javierg/.gradle/caches/modules-2/files-2.1/org.springframework.android/spring-android-core/1.0.1.RELEASE/e68f0e8e4b636ee30c4de58953be38d9b72a5e3b/spring-android-core-1.0.1.RELEASE.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e68f0e8e4b636ee30c4de58953be38d9b72a5e3b">
+        <dex dex="/Users/javierg/AndroidStudioProjects/Exchandroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/spring-android-core-1.0.1.RELEASE_ff174e9a84302771b336ebef538b2a72b9536c8c/classes.dex" />
+    </item>
+
+</items>
