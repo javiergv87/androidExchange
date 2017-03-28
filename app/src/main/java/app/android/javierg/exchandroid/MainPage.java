@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -15,13 +16,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.gson.Gson;
 import com.loopj.android.http.HttpGet;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,8 +35,6 @@ import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.client.HttpClient;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 import model.Forex;
-import services.ForexRestClient;
-import services.ServiceManager;
 
 public class MainPage extends AppCompatActivity {
 
@@ -43,6 +42,8 @@ public class MainPage extends AppCompatActivity {
     private Spinner to;
     private TextView amountConverted;
     private TextView amount;
+    private TextView toCurrency;
+    private TextView fromCurrency;
     private String fromSelected;
     private String toSelected;
     private String amountConv;
@@ -69,24 +70,31 @@ public class MainPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_page);
+        setContentView(R.layout.activity_main_page_new_version);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         from = (Spinner) findViewById(R.id.from);
         to = (Spinner) findViewById(R.id.to);
+        toCurrency = (TextView) findViewById(R.id.toCurrency);
+        fromCurrency  = (TextView) findViewById(R.id.fromCurrency);
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         ArrayList<ItemData> list = new ArrayList<>();
-        list.add(new ItemData("AUD Australian Dollar",R.drawable.australia,"AUD"));
-        list.add(new ItemData("BGN Bulgarian Lev",R.drawable.bulgaria,"BGN"));
-        list.add(new ItemData("BRL Brazilian real",R.drawable.brazil,"BRL"));
-        list.add(new ItemData("CAD Canadian Dollar",R.drawable.canada,"CAD"));
-        list.add(new ItemData("CHZ Swiss franc",R.drawable.switzerland,"CHZ"));
-        list.add(new ItemData("CZK Czched crown",R.drawable.czech,"CZK"));
-        list.add(new ItemData("DKK Danish crown",R.drawable.australia,"DKK"));
-        list.add(new ItemData("EUR Euro",R.drawable.euro,"EUR"));
-        list.add(new ItemData("GBP British pound",R.drawable.uk,"GBP"));
-        list.add(new ItemData("USD United States dollar",R.drawable.usa,"USD"));
+        list.add(new ItemData("AUD",R.drawable.australia,"AUD"));
+        list.add(new ItemData("BGN",R.drawable.bulgaria,"BGN"));
+        list.add(new ItemData("BRL",R.drawable.brazil,"BRL"));
+        list.add(new ItemData("CAD",R.drawable.canada,"CAD"));
+        list.add(new ItemData("CHZ",R.drawable.switzerland,"CHZ"));
+        list.add(new ItemData("CZK",R.drawable.czech,"CZK"));
+        list.add(new ItemData("DKK",R.drawable.australia,"DKK"));
+        list.add(new ItemData("EUR",R.drawable.euro,"EUR"));
+        list.add(new ItemData("GBP",R.drawable.uk,"GBP"));
+        list.add(new ItemData("USD",R.drawable.usa,"USD"));
         SpinnerAdapter adapter = new SpinnerAdapter(this,R.layout.spinner_layout,R.id.txt,list);
+        SpinnerAdapter adapterTo = new SpinnerAdapter(this,R.layout.spinner_layout_to,R.id.txt,list);
         from.setAdapter(adapter);
-        to.setAdapter(adapter);
+        to.setAdapter(adapterTo);
         from.setSelection(8);
         to.setSelection(7);
         amount = (EditText) findViewById(R.id.amount);
@@ -186,6 +194,8 @@ public class MainPage extends AppCompatActivity {
         ItemData fr,t ;
         fr = (ItemData) from.getSelectedItem();
         t = (ItemData) to.getSelectedItem();
+        toCurrency.setText(t.getCode());
+        fromCurrency.setText(fr.getCode());
         fromSelected = fr.getCode();
         toSelected = t.getCode();
         new HttpRequestTask().execute(String.format("http://chartapi.finance.yahoo.com/instrument/1.0/%s%s=X/chartdata;type=quote;range=1d/json",fromSelected,toSelected));
