@@ -5,6 +5,7 @@
     android:animationCache="true"
     android:spinnerMode="dialog"
     android:background="@color/colorPrimary"
+    android:gravity="left"
     android:orientation="horizontal">
 
     <ImageView
@@ -20,5 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:padding="10dp"
-        android:textColorLink="@android:color/background_light"></TextView>
+        android:textColor="@android:color/black"
+        android:textColorLink="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"></TextView>
 </LinearLayout>

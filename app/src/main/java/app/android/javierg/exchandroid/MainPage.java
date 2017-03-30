@@ -1,6 +1,17 @@
 package app.android.javierg.exchandroid;
 
+import android.app.Activity;
+import android.app.Application;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
+import android.provider.Settings;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -12,6 +23,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -29,12 +41,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.client.HttpClient;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 import model.Forex;
+
+import static com.loopj.android.http.AsyncHttpClient.LOG_TAG;
 
 public class MainPage extends AppCompatActivity {
 
@@ -47,7 +64,12 @@ public class MainPage extends AppCompatActivity {
     private String fromSelected;
     private String toSelected;
     private String amountConv;
-    private ToggleButton swappingButton;
+    private FloatingActionButton swappingButton;
+    private ProgressBar loading;
+    private static boolean connection = true;
+    private AdView mAdView;
+
+
 
     private ArrayAdapter<String> currencyList;
 
@@ -69,6 +91,9 @@ public class MainPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page_new_version);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
@@ -77,37 +102,44 @@ public class MainPage extends AppCompatActivity {
         to = (Spinner) findViewById(R.id.to);
         toCurrency = (TextView) findViewById(R.id.toCurrency);
         fromCurrency  = (TextView) findViewById(R.id.fromCurrency);
-        AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+
+        loading = (ProgressBar) findViewById(R.id.loading);
+
+
         ArrayList<ItemData> list = new ArrayList<>();
         list.add(new ItemData("AUD",R.drawable.australia,"AUD"));
-        list.add(new ItemData("BGN",R.drawable.bulgaria,"BGN"));
         list.add(new ItemData("BRL",R.drawable.brazil,"BRL"));
         list.add(new ItemData("CAD",R.drawable.canada,"CAD"));
-        list.add(new ItemData("CHZ",R.drawable.switzerland,"CHZ"));
         list.add(new ItemData("CZK",R.drawable.czech,"CZK"));
         list.add(new ItemData("DKK",R.drawable.australia,"DKK"));
         list.add(new ItemData("EUR",R.drawable.euro,"EUR"));
         list.add(new ItemData("GBP",R.drawable.uk,"GBP"));
         list.add(new ItemData("USD",R.drawable.usa,"USD"));
+        list.add(new ItemData("JPY",R.drawable.japan,"JPY"));
         SpinnerAdapter adapter = new SpinnerAdapter(this,R.layout.spinner_layout,R.id.txt,list);
         SpinnerAdapter adapterTo = new SpinnerAdapter(this,R.layout.spinner_layout_to,R.id.txt,list);
         from.setAdapter(adapter);
         to.setAdapter(adapterTo);
-        from.setSelection(8);
-        to.setSelection(7);
+        //builder = new AlertDialog.Builder(MainPage.this);
+        //if(!isNetworkAvailable())
+        //    showDialog();
+        from.setSelection(7);
+        to.setSelection(6);
         amount = (EditText) findViewById(R.id.amount);
-        swappingButton = (ToggleButton) findViewById(R.id.swappingButton);
+        swappingButton = (FloatingActionButton) findViewById(R.id.swappingButton);
         //updateSwappingButton();
-        swappingButton.setText("");
-        swappingButton.setTextOff("");
-        swappingButton.setTextOn("");
+
         amount.setText("1");
         amountConverted = (TextView) findViewById(R.id.amountConverted);
         amountConverted.setKeyListener(null);
+        fromCurrency.setKeyListener(null);
+        toCurrency.setKeyListener(null);
+        mAdView = (AdView) findViewById(R.id.adView);
 
-        updateChange();
+        //if(isNetworkAvailable())
+         //   mAdView.loadAd(adRequest);
+
+        //updateChange();
         from.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -175,10 +207,56 @@ public class MainPage extends AppCompatActivity {
 
     }
 
-    public void updateSwappingButton() {
-        String fromCode = ((ItemData) from.getSelectedItem()).getCode();
-        String toCode = ((ItemData) to.getSelectedItem()).getCode();
-        swappingButton.setText(toCode + " to " + fromCode);
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    private boolean hasActiveInternetConnection() {
+        if (isNetworkAvailable()) {
+            try {
+                HttpURLConnection urlc = (HttpURLConnection) (new URL("http://www.google.com").openConnection());
+                urlc.setRequestProperty("User-Agent", "Test");
+                urlc.setRequestProperty("Connection", "close");
+                urlc.setConnectTimeout(1500);
+                urlc.connect();
+                return (urlc.getResponseCode() == 200);
+            } catch (IOException e) {
+                Log.e(LOG_TAG, "Error checking internet connection", e);
+            }
+        } else {
+            Log.d(LOG_TAG, "No network available!");
+        }
+        return false;
+    }
+
+    private void showDialog()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainPage.this);
+
+        AlertDialog alertDialog;
+        builder.setMessage("The device has no Internet connection, please check the network connectivity and try again")
+                .setCancelable(false)
+                .setPositiveButton("Check connectivity", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+                        //finish();
+;
+                    }
+                })
+                .setNegativeButton("Quit", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        try {
+                            finish();
+                        } catch (Throwable throwable) {
+                            throwable.printStackTrace();
+                        }
+                    }
+                });
+        alertDialog = builder.create();
+        alertDialog.show();
     }
 
     public void swapCurrencies() {
@@ -191,15 +269,19 @@ public class MainPage extends AppCompatActivity {
 
 
     public void updateChange() {
-        ItemData fr,t ;
-        fr = (ItemData) from.getSelectedItem();
-        t = (ItemData) to.getSelectedItem();
-        toCurrency.setText(t.getCode());
-        fromCurrency.setText(fr.getCode());
-        fromSelected = fr.getCode();
-        toSelected = t.getCode();
-        new HttpRequestTask().execute(String.format("http://chartapi.finance.yahoo.com/instrument/1.0/%s%s=X/chartdata;type=quote;range=1d/json",fromSelected,toSelected));
-        //updateSwappingButton();
+        //if(alertDialog==null && !alertDialog.isShowing()) {
+            ItemData fr, t;
+            fr = (ItemData) from.getSelectedItem();
+            t = (ItemData) to.getSelectedItem();
+            toCurrency.setText(t.getCode());
+            fromCurrency.setText(fr.getCode());
+            fromSelected = fr.getCode();
+            toSelected = t.getCode();
+            if (amount.getText().length() == 0)
+                amount.setText("1");
+            new HttpRequestTask().execute(String.format("http://chartapi.finance.yahoo.com/instrument/1.0/%s%s=X/chartdata;type=quote;range=1d/json", fromSelected, toSelected));
+            //updateSwappingButton();
+        //}
     }
 
 
@@ -226,6 +308,7 @@ public class MainPage extends AppCompatActivity {
 
         } catch (Exception e) {
             Log.d("InputStream", e.getLocalizedMessage());
+            connection=true;
         }
 
         return result;
@@ -249,32 +332,51 @@ public class MainPage extends AppCompatActivity {
         @Override
         protected String doInBackground(String... urls) {
             String response="";
-            try {
+            if(hasActiveInternetConnection()) {
+                try {
                 /*RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
                 String forex = restTemplate.getForObject(String.format(ForexRestClient.API_URL,fromSelected,toSelected), String.class);
                 return forex;*/
-                response = GET(urls[0]);
-            } catch (Exception e) {
-                Log.e("MainActivity", e.getMessage(), e);
-            }
+                    response = GET(urls[0]);
+                } catch (Exception e) {
+                    Log.e("MainActivity", e.getMessage(), e);
+                }
 
-            try {
-                JSONObject jsonObject = new JSONObject(response);
-            } catch (JSONException e) {
-                e.printStackTrace();
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Gson gson = new Gson();
+                Forex forex = gson.fromJson(response, Forex.class);
+                amountConv = forex.getSeries().get(forex.getSeries().size() - 1).getClose();
+
+
+                return response;
+            } else {
+                return null;
             }
-            Gson gson = new Gson();
-            Forex forex = gson.fromJson(response,Forex.class);
-            amountConv = forex.getSeries().get(forex.getSeries().size()-1).getClose();
-            return response;
         }
 
+
+        @Override
+        protected void onPreExecute() {
+            loading.setVisibility(View.VISIBLE);
+        }
         @Override
         protected void onPostExecute(String result) {
             // The results of the above method
             // Processing the results here
-            setAmountConverted(amountConv);
+            if(result!=null) {
+                setAmountConverted(amountConv);
+                loading.setVisibility(View.INVISIBLE);
+            }
+            else
+                showDialog();
+            loading.setVisibility(View.INVISIBLE);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
         }
 
 
@@ -282,15 +384,16 @@ public class MainPage extends AppCompatActivity {
 
     public void setAmountConverted(final String amount) {
         TextView result = (TextView) findViewById(R.id.amountConverted);
-        result.setVisibility(View.VISIBLE);
         BigDecimal first;
         if(amount!=null)
             first = new BigDecimal(amount);
         else
             first = new BigDecimal(1);
+        if(this.amount.getText().toString().isEmpty())
+            this.amount.setText("1");
         BigDecimal second = new BigDecimal(this.amount.getText().toString());
         BigDecimal res = first.multiply(second);
-        result.setText(String.valueOf(res));
+        result.setText(String.valueOf(res.setScale(3, RoundingMode.CEILING)));
     }
 
 
