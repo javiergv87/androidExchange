@@ -18,12 +18,15 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -55,6 +58,7 @@ import static com.loopj.android.http.AsyncHttpClient.LOG_TAG;
 
 public class MainPage extends AppCompatActivity {
 
+    private RelativeLayout relativeLayout;
     private Spinner from;
     private Spinner to;
     private TextView amountConverted;
@@ -67,7 +71,10 @@ public class MainPage extends AppCompatActivity {
     private FloatingActionButton swappingButton;
     private ProgressBar loading;
     private static boolean connection = true;
+    private BigDecimal rate;
     private AdView mAdView;
+    private AlertDialog.Builder builder;
+    private AlertDialog alertDialog;
 
 
 
@@ -97,7 +104,7 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page_new_version);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-
+        relativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout);
         from = (Spinner) findViewById(R.id.from);
         to = (Spinner) findViewById(R.id.to);
         toCurrency = (TextView) findViewById(R.id.toCurrency);
@@ -135,6 +142,15 @@ public class MainPage extends AppCompatActivity {
         fromCurrency.setKeyListener(null);
         toCurrency.setKeyListener(null);
         mAdView = (AdView) findViewById(R.id.adView);
+
+        relativeLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                return true;
+            }
+        });
 
         //if(isNetworkAvailable())
          //   mAdView.loadAd(adRequest);
@@ -207,6 +223,12 @@ public class MainPage extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        showDialog();
+    }
+
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -214,49 +236,36 @@ public class MainPage extends AppCompatActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    private boolean hasActiveInternetConnection() {
-        if (isNetworkAvailable()) {
-            try {
-                HttpURLConnection urlc = (HttpURLConnection) (new URL("http://www.google.com").openConnection());
-                urlc.setRequestProperty("User-Agent", "Test");
-                urlc.setRequestProperty("Connection", "close");
-                urlc.setConnectTimeout(1500);
-                urlc.connect();
-                return (urlc.getResponseCode() == 200);
-            } catch (IOException e) {
-                Log.e(LOG_TAG, "Error checking internet connection", e);
-            }
-        } else {
-            Log.d(LOG_TAG, "No network available!");
-        }
-        return false;
-    }
+
 
     private void showDialog()
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainPage.this);
+        if(!isNetworkAvailable()) {
+            builder = new AlertDialog.Builder(MainPage.this);
 
-        AlertDialog alertDialog;
-        builder.setMessage("The device has no Internet connection, please check the network connectivity and try again")
-                .setCancelable(false)
-                .setPositiveButton("Check connectivity", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-                        //finish();
-;
-                    }
-                })
-                .setNegativeButton("Quit", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        try {
-                            finish();
-                        } catch (Throwable throwable) {
-                            throwable.printStackTrace();
+            builder.setTitle("Connection failed");
+            builder.setMessage("This application requires network access. Please, enable mobile network or Wi-Fi.")
+                    .setCancelable(false)
+                    .setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            MainPage.this.startActivity(new Intent(Settings.ACTION_SETTINGS));
+                            //finish();
                         }
-                    }
-                });
-        alertDialog = builder.create();
-        alertDialog.show();
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            MainPage.this.finish();
+                        }
+                    });
+            alertDialog = builder.create();
+            alertDialog.show();
+        }
+        else {
+
+            updateChange();
+        }
     }
 
     public void swapCurrencies() {
@@ -270,6 +279,7 @@ public class MainPage extends AppCompatActivity {
 
     public void updateChange() {
         //if(alertDialog==null && !alertDialog.isShowing()) {
+
             ItemData fr, t;
             fr = (ItemData) from.getSelectedItem();
             t = (ItemData) to.getSelectedItem();
@@ -281,7 +291,7 @@ public class MainPage extends AppCompatActivity {
                 amount.setText("1");
             new HttpRequestTask().execute(String.format("http://chartapi.finance.yahoo.com/instrument/1.0/%s%s=X/chartdata;type=quote;range=1d/json", fromSelected, toSelected));
             //updateSwappingButton();
-        //}
+
     }
 
 
@@ -332,7 +342,7 @@ public class MainPage extends AppCompatActivity {
         @Override
         protected String doInBackground(String... urls) {
             String response="";
-            if(hasActiveInternetConnection()) {
+            if(isNetworkAvailable()) {
                 try {
                 /*RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
@@ -352,7 +362,7 @@ public class MainPage extends AppCompatActivity {
                 Forex forex = gson.fromJson(response, Forex.class);
                 amountConv = forex.getSeries().get(forex.getSeries().size() - 1).getClose();
 
-
+                rate = new BigDecimal(amountConv);
                 return response;
             } else {
                 return null;
@@ -377,6 +387,9 @@ public class MainPage extends AppCompatActivity {
             loading.setVisibility(View.INVISIBLE);
             AdRequest adRequest = new AdRequest.Builder().build();
             mAdView.loadAd(adRequest);
+            if(alertDialog!=null && alertDialog.isShowing()) {
+                alertDialog.closeOptionsMenu();
+            }
         }
 
 
