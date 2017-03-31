@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "285215819842",
+    "firebase_url": "https://exchandroid.firebaseio.com",
+    "project_id": "exchandroid",
+    "storage_bucket": "exchandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:285215819842:android:4d639bc857e9f74b",
+        "android_client_info": {
+          "package_name": "app.android.javierg.exchandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "285215819842-1abr50ef304g0lhc9mfhu3ub0cbte5ma.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmXp0AYyyOm5gbfFUtd0zV6vtJebpgjWU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
