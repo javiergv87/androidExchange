@@ -51,7 +51,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:textAlignment="center"
-            android:textSize="30sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="233dp"
             tools:layout_editor_absoluteY="323dp" />
@@ -138,7 +138,7 @@
             android:phoneNumber="false"
             android:singleLine="false"
             android:textAlignment="center"
-            android:textSize="30sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="233dp"
             tools:layout_editor_absoluteY="220dp" />
@@ -157,12 +157,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="false"
             android:layout_marginTop="22dp"
             app:adSize="BANNER"
             app:adUnitId="@string/banner_ad_unit_id"
             tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="37dp" />
+            tools:layout_editor_absoluteY="37dp"
+            android:layout_alignParentEnd="true" />
 
 
     </RelativeLayout>

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Exchandroid.iml" filepath="$PROJECT_DIR$/Exchandroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/androidExchange.iml" filepath="$PROJECT_DIR$/androidExchange.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

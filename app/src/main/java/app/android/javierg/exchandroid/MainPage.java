@@ -240,6 +240,10 @@ public class MainPage extends AppCompatActivity {
 
     private void showDialog()
     {
+        if(alertDialog!=null && isNetworkAvailable()) {
+            alertDialog.cancel();
+            alertDialog = null;
+        }
         if(!isNetworkAvailable()) {
             builder = new AlertDialog.Builder(MainPage.this);
 
